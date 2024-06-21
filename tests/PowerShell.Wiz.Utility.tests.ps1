@@ -1,10 +1,15 @@
-Import-Module .\PowerShell.Wiz.Utility.psm1
+param (
+    $Wiz_CLIENT_ID,
 
+    $Wiz_CLIENT_SECRET
+)
+
+Import-Module .\PowerShell.Wiz.Utility.psm1
 
 Describe "PowerShell.Wiz.Utilty" {
     
     It "PSWizAuthenticationToken should return null" {
-        Get-PSWizAuthenticationToken -ClientID $ENV:Wiz_CLIENT_ID -ClientSecret $Env:Wiz_CLIENT_SECRET | Should -BeExactly $null
+        Get-PSWizAuthenticationToken -ClientID $Wiz_CLIENT_ID -ClientSecret $Wiz_CLIENT_SECRET | Should -BeExactly $null
     }
 
     It "PSWizCLIRelease should be of type pscustomobject" {
