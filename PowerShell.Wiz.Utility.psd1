@@ -30,7 +30,7 @@ CompanyName = 'Free Lancer'
 Copyright = '(c) Chendrayan Venkatesan. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'PowerShell cmdlets to work with Wiz'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('Wiz')
 
         # A URL to the license for this module.
         # LicenseUri = ''
