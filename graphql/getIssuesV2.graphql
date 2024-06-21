@@ -1,0 +1,24 @@
+query getIssuesV2($endCursor: String, $projectId: [String!]) {
+  issuesV2(first: 100, after: $endCursor, filterBy: { project: $projectId }) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      id
+      openReason
+      status
+      type
+      projects {
+        id
+        name
+      }
+      sourceRule {
+        id
+        name
+        enabled
+      }
+      createdAt
+    }
+  }
+}

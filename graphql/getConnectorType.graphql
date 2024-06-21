@@ -1,0 +1,10 @@
+query getConnectorType {
+  connectorTypes {
+    id
+    name
+    categories {
+      id
+      name
+    }
+  }
+}
