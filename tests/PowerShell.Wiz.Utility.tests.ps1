@@ -16,6 +16,6 @@ Describe "PowerShell.Wiz.Utilty" {
     }
     
     It "graphql folder should have 8 files" {
-        (Get-ChildItem -Path .\graphql | Measure-Object).Count | Should -BeExactly 8   
+        (Get-ChildItem -Path .\graphql | Measure-Object).Count | Should -BeExactly 10   
     }
 }
