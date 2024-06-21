@@ -1,0 +1,15 @@
+query getCLIRelease($endCursor: String, $platform: [CLIReleasePlatform!]) {
+  cliReleases(first: 10, after: $endCursor, filterBy: {platform: $platform}) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    nodes {
+      platform
+      architecture
+      version
+      url
+      sha256
+    }
+  }
+}

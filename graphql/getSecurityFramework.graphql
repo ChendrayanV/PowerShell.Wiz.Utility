@@ -1,0 +1,13 @@
+query getSecurityFramework($endCursor: String) {
+  securityFrameworks(first: 99, after: $endCursor) {
+    nodes {
+      id
+      builtin
+      name
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}

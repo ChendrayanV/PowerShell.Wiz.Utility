@@ -1,0 +1,39 @@
+query getConfigurationFinding(
+  $endCursor: String
+  $status: [FindingCommonStatus!]
+  $source: [ConfigurationSource!]
+) {
+  configurationFindings(
+    first: 500
+    after: $endCursor
+    filterBy: { status: $status, source: $source }
+  ) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      id
+      name
+      result
+
+      resource {
+        id
+        name
+        region
+        projects {
+          id
+          name
+        }
+        type
+        cloudPlatform
+      }
+      source
+      status
+      subscription {
+        id
+        name
+      }
+    }
+  }
+}

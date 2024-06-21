@@ -1,0 +1,17 @@
+query getProject($endCursor: String, $impact: [BusinessImpact!]) {
+  projects(first: 99, after: $endCursor, filterBy: {impact: $impact}) {
+    nodes {
+      id
+      name
+      slug
+      projectOwners {
+        name
+        email
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}

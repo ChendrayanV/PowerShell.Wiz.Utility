@@ -1,0 +1,23 @@
+mutation {
+  createCloudConfigurationRule(
+    input: {
+      name: "test CCR1"
+      description: "this should be deleted1"
+      targetNativeTypes: ["bucket"]
+      severity: HIGH
+      enabled: true
+      opaPolicy: ""
+      remediationInstructions: "**Remediation**"
+      projectId: "8f741d15-2371-5a00-b4c1-3c14fa2a60f0"
+      iacMatchers: {
+        type: TERRAFORM
+        regoCode: "package wiz"
+        remediationInstructions: "*Remediation*"
+      }
+    }
+  ) {
+    rule {
+      id
+    }
+  }
+}

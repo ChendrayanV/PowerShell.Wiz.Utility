@@ -1,0 +1,20 @@
+query getSystemHealthIssue($endCursor: String) {
+  systemHealthIssues(first: 10, after: $endCursor) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      id
+      name
+      status
+      deployment {
+        id
+        name
+        type
+      }
+      severity
+      lastSeenAt
+    }
+  }
+}

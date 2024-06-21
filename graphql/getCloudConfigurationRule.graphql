@@ -1,0 +1,18 @@
+query getCloudConfigurationRule($endCursor: String, $enabled: Boolean) {
+  cloudConfigurationRules(
+    first: 99
+    after: $endCursor
+    filterBy: {enabled: $enabled}
+  ) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      id
+      name
+      enabled
+      severity
+    }
+  }
+}

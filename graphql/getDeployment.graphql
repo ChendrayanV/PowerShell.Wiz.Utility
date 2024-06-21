@@ -1,0 +1,14 @@
+query getDeployment($endCursor: String) {
+  deployments(first: 99, after: $endCursor) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    nodes {
+      id
+      name
+      status
+      lastSeenAt
+    }
+  }
+}
