@@ -21,14 +21,6 @@ function Get-PSWizAuthenticationToken {
     $tokenByteArray = [System.Convert]::FromBase64String($tokenPayload)
     $tokenArray = [System.Text.Encoding]::ASCII.GetString($tokenByteArray)
     $tokobj = $tokenArray | ConvertFrom-Json
-
-    # return $(
-    #     [PSCustomObject]@{
-    #         data_center  = $tokobj.dc
-    #         access_token = $access_token
-    #     }
-    # )
-
     $Script:Access_Token = $access_token
     $Script:Data_Center = $tokobj.dc
 }

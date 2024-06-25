@@ -1,0 +1,24 @@
+query getUser($endCursor: String, $source: AuthenticationSource) {
+  users(first: 10, after: $endCursor, filterBy: { source: $source }) {
+    nodes {
+      id
+      name
+      email
+      createdAt
+      updatedAt
+      expiresAt
+      lastLoginAt
+      isSuspended
+      effectiveRole {
+        id
+        name
+        description
+        isProjectScoped
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

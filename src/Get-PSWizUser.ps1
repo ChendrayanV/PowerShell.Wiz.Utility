@@ -1,17 +1,17 @@
-function Get-PSWizIssueV2 {
+function Get-PSWizUser {
     
     [CmdletBinding()]
     param (
         [Parameter(HelpMessage = "Project GUID")]
-        [string]
-        $ProjectId
+        [ValidateSet('MODERN' , 'LEGACY')]
+        $Source
     )
     
     $Query = [PSCustomObject]@{
-        operationName = "getIssuesV2"
-        query         = $(Get-Content .\graphql\getIssuesV2.graphql -Raw)
+        operationName = "getUser"
+        query         = $(Get-Content .\graphql\getUser.graphql -Raw)
         variables     = @{
-            projectId = @($ProjectId)
+            source    = $Source
             endCursor = $null
         }
     } | ConvertTo-Json -Compress
@@ -20,16 +20,16 @@ function Get-PSWizIssueV2 {
     while ($true) {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
-            operationName = "getIssuesV2"
-            query         = $(Get-Content .\graphql\getIssuesV2.graphql -Raw)
+            operationName = "getUser"
+            query         = $(Get-Content .\graphql\getUser.graphql -Raw)
             variables     = @{
-                projectId = @($ProjectId)
-                endCursor = $response.data.issuesV2.pageInfo.endCursor
+                source    = $Source
+                endCursor = $response.data.users.pageInfo.endCursor
             }
         } | ConvertTo-Json -Compress
-        $Collection += $response.data.issuesV2.nodes
+        $Collection += $response.data.users.nodes
 
-        if ($response.data.issuesV2.pageInfo.hasNextPage -eq $false) {
+        if ($response.data.users.pageInfo.hasNextPage -eq $false) {
             break
         }
     }

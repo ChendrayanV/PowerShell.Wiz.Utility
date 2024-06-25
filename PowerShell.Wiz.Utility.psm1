@@ -1,4 +1,4 @@
-$src = @(Get-ChildItem -Path $PSScriptRoot\src\*.ps1 -ErrorAction SilentlyContinue)
+$src = @(Get-ChildItem -Path $PSScriptRoot\src\*\*.ps1 -Recurse -ErrorAction SilentlyContinue)
 Foreach($import in $src) {
     try {
         . $import.fullname
