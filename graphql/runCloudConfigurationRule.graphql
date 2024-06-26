@@ -1,0 +1,10 @@
+mutation runCloudConfigurationRule($id: ID!) {
+  runCloudConfigurationRule(input: { id: $id }) {
+    rule {
+      id
+      shortId
+      name
+      threats
+    }
+  }
+}

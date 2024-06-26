@@ -1,0 +1,21 @@
+query getConnector($endCursor: String, $enabled: Boolean) {
+  connectors(first: 10, after: $endCursor, filterBy: { enabled: $enabled }) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    nodes {
+      id
+      name
+      type {
+        id
+      }
+      enabled
+      errorCode
+      extraConfig
+      authParams
+      lastActivity
+      status
+    }
+  }
+}

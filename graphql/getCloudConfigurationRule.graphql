@@ -2,7 +2,7 @@ query getCloudConfigurationRule($endCursor: String, $enabled: Boolean) {
   cloudConfigurationRules(
     first: 99
     after: $endCursor
-    filterBy: {enabled: $enabled}
+    filterBy: { enabled: $enabled }
   ) {
     pageInfo {
       endCursor
@@ -10,6 +10,7 @@ query getCloudConfigurationRule($endCursor: String, $enabled: Boolean) {
     }
     nodes {
       id
+      shortId
       name
       enabled
       severity
