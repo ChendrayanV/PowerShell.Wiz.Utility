@@ -1,0 +1,5 @@
+mutation deleteCICDScan($id: ID!) {
+  deleteCICDScan(input: { id: $id }) {
+    id
+  }
+}
