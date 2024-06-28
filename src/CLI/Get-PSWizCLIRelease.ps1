@@ -1,17 +1,29 @@
 function Get-PSWizCLIRelease {
     <#
     .SYNOPSIS
-        A short one-line action-based description, e.g. 'Tests if a function is valid'
+        Retrieves the latest CLI release information for the specified platform.
+
     .DESCRIPTION
-        A longer description of the function, its purpose, common use cases, etc.
-    .NOTES
-        Information or caveats about the function e.g. 'This function is not supported in Linux'
-    .LINK
-        Specify a URI to a help page, this will show when Get-Help -Online is used.
+        The Get-PSWizCLIRelease cmdlet sends a GraphQL query to the Wiz API to retrieve the latest CLI release information for a specified platform. The available platforms include WINDOWS, LINUX, DARWIN, and DOCKER_LINUX. The cmdlet uses a paging mechanism to ensure all release data is collected if multiple pages of results are returned.
+
+    .PARAMETER Platform
+        Specifies the platform for which to retrieve the CLI release information. Valid values are WINDOWS, LINUX, DARWIN, and DOCKER_LINUX.
+
     .EXAMPLE
-        Test-MyTestFunction -Verbose
-        Explanation of the function or its result. You can include multiple examples with additional .EXAMPLE lines
+        PS C:\> Get-PSWizCLIRelease -Platform WINDOWS
+        This example retrieves the latest CLI release information for the Windows platform.
+
+    .EXAMPLE
+        PS C:\> Get-PSWizCLIRelease -Platform LINUX
+        This example retrieves the latest CLI release information for the Linux platform.
+
+    .NOTES
+        This function requires an active access token stored in the global variable $Access_Token and the data center information stored in the global variable $Data_Center. The function reads a GraphQL query from a file named getCLIRelease.graphql located in the .\graphql\ directory.
+
+    .LINK
+        https://docs.wiz.io/cli-releases
     #>
+
     
     
     [CmdletBinding()]

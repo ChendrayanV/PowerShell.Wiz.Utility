@@ -1,0 +1,45 @@
+query getCICDScan($endCursor: String, $state: [CICDScanState!]) {
+  cicdScans(first: 500, after: $endCursor, filterBy: { state: $state }) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      id
+      resultJSON
+      status {
+        verdict
+        details
+      }
+      result {
+        __typename
+      }
+      extraInfo {
+        clientName
+        clientVersion
+      }
+      policies {
+        id
+        name
+      }
+      scanOriginResource {
+        name
+      }
+      scanOriginResourceType
+      projects {
+        id
+        name
+      }
+      createdBy {
+        user {
+          id
+          name
+        }
+        serviceAccount {
+          id
+          name
+        }
+      }
+    }
+  }
+}

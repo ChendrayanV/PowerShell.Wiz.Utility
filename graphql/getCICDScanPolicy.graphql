@@ -1,0 +1,28 @@
+query getCICDScanPolicy($endCursor: String) {
+  cicdScanPolicies(
+    first: 100
+    after: $endCursor
+    filterBy: { builtin: false }
+  ) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      id
+      name
+      description
+      builtin
+      ignoreRules {
+        id
+        name
+        description
+      }
+      projects {
+        id
+        name
+        description
+      }
+    }
+  }
+}

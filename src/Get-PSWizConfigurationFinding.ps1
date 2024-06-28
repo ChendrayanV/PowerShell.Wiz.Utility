@@ -1,4 +1,40 @@
 function Get-PSWizConfigurationFinding {
+    <#
+    .SYNOPSIS
+        Retrieves configuration findings from a specified source with a given status.
+
+    .DESCRIPTION
+        The Get-PSWizConfigurationFinding cmdlet queries the Wiz API to retrieve configuration findings based on the specified status and source. The findings are retrieved using a GraphQL query and are returned as a collection.
+
+    .PARAMETER Status
+        Specifies the status of the configuration findings to retrieve. Valid values are:
+            - OPEN
+            - IN_PROGRESS
+            - RESOLVED
+            - REJECTED
+
+    .PARAMETER Source
+        Specifies the source of the configuration findings. Valid values are:
+            - WIZ_CSPM
+            - ASC
+            - AWSInspector
+
+    .EXAMPLE
+        Get-PSWizConfigurationFinding -Status OPEN -Source WIZ_CSPM
+        This command retrieves all configuration findings with the status 'OPEN' from the source 'WIZ_CSPM'.
+
+    .EXAMPLE
+        Get-PSWizConfigurationFinding -Status RESOLVED -Source AWSInspector
+        This command retrieves all configuration findings with the status 'RESOLVED' from the source 'AWSInspector'.
+
+    .OUTPUTS
+        System.Object
+        Returns a collection of configuration findings.
+
+    .NOTES
+        Author : Chendrayan Venkatesan (Chen V)
+    #>
+
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]

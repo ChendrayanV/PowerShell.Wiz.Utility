@@ -1,0 +1,25 @@
+query ($matcherType: [CloudConfigurationRuleMatcherType!], $endCursor: String) {
+  cliConfigurationRules(
+    first: 10
+    after: $endCursor
+    filterBy: {matcherType: $matcherType}
+  ) {
+    
+    nodes {
+      id
+      shortName
+      severity
+      iacMatchers {
+        id
+        builtinId
+        type
+        shortName
+        enabled
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
