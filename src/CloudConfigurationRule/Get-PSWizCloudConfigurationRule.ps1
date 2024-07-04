@@ -43,7 +43,7 @@ function Get-PSWizCloudConfigurationRule {
     
     $Query = [PSCustomObject]@{
         operationName = "getCloudConfigurationRule"
-        query         = $(Get-Content .\graphql\getCloudConfigurationRule.graphql -Raw)
+        query         = $(Get-Content $PSScriptRoot\graphql\getCloudConfigurationRule.graphql -Raw)
         variables     = @{
             enabled   = $Enabled
             endCursor = $null
