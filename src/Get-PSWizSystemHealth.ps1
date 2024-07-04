@@ -26,10 +26,11 @@ function Get-PSWizSystemHealth {
         https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
     #>
 
-    
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getSystemHealthIssue"
-        query         = $(Get-Content .\graphql\getSystemHealthIssue.graphql -Raw)
+        query         = $(Get-Content "$($queryPath)\graphql\getSystemHealthIssue.graphql" -Raw)
         variables     = @{
             endCursor = $null
         }
@@ -40,7 +41,7 @@ function Get-PSWizSystemHealth {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getSystemHealthIssue"
-            query         = $(Get-Content .\graphql\getSystemHealthIssue.graphql -Raw)
+            query         = $(Get-Content "$($queryPath)\graphql\getSystemHealthIssue.graphql" -Raw)
             variables     = @{
                 endCursor = $response.data.systemHealthIssues.pageInfo.endCursor
             }

@@ -51,9 +51,11 @@ function Update-PSWizServiceAccount {
         $ExpiresAt
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "updateServiceAccount"
-        query         = $(Get-Content .\graphql\updateServiceAccount.graphql -Raw)
+        query         = $(Get-Content "$($queryPath)\graphql\updateServiceAccount.graphql" -Raw)
         variables     = @{
             serviceAccountId = $ServiceAccountId
             scopes           = @($Scopes)

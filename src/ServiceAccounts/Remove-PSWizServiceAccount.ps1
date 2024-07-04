@@ -43,10 +43,11 @@ function Remove-PSWizServiceAccount {
     
     
     process {
+        $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
         foreach ($serviceAccountId in $Id) {
             $Query = [PSCustomObject]@{
                 operationName = "deleteServiceAccount"
-                query         = $(Get-Content .\graphql\deleteServiceAccount.graphql -Raw)
+                query         = $(Get-Content "$($queryPath)\graphql\deleteServiceAccount.graphql" -Raw)
                 variables     = @{
                     id = $serviceAccountId
                 }

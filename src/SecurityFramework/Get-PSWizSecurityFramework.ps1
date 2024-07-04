@@ -43,9 +43,11 @@ function Get-PSWizSecurityFramework {
         $BuiltIn
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getSecurityFramework"
-        query         = $(Get-Content .\graphql\getSecurityFramework.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getSecurityFramework.graphql" -Raw)
         variables     = @{
             endCursor = $null
         }
@@ -56,7 +58,7 @@ function Get-PSWizSecurityFramework {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getSecurityFramework"
-            query         = $(Get-Content .\graphql\getSecurityFramework.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getSecurityFramework.graphql" -Raw)
             variables     = @{
                 endCursor = $response.data.securityFrameworks.pageInfo.endCursor
             }

@@ -34,9 +34,11 @@ function New-PSWizServiceAccountSecret {
         $ClientID
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "rotateServiceAccountSecret"
-        query         = $(Get-Content .\graphql\rotateServiceAccountSecret.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\rotateServiceAccountSecret.graphql" -Raw)
         variables     = @{
             clientId = $ClientID
         }

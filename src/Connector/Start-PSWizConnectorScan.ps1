@@ -66,10 +66,11 @@ function Start-PSWizConnectorScan {
     }
     
     process {
+        $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
         foreach ($Id in $ConnectorId) {
             $Query = [PSCustomObject]@{
                 operationName = "requestConnectorScan"
-                query         = $(Get-Content .\graphql\requestConnectorScan.graphql -Raw)
+                query         = $(Get-Content -Path "$($queryPath)\graphql\requestConnectorScan.graphql" -Raw)
                 variables     = @{
                     id                   = $($Id)
                     omitSecurityToolScan = $($OmitSecurityToolScan)

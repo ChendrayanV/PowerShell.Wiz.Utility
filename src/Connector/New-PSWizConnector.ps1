@@ -61,9 +61,11 @@ function New-PSWizConnector {
 
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "createConnector"
-        query         = $(Get-Content .\graphql\createConnector.graphql -Raw )
+        query         = $(Get-Content -Path "$($queryPath)\graphql\createConnector.graphql" -Raw )
         variables     = @{
             name       = $($Name)
             type       = $($Type)

@@ -66,9 +66,11 @@ function Add-PSWizServiceAccount {
         $ExpiresAt
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "createServiceAccount"
-        query         = $(Get-Content .\graphql\createServiceAccount.graphql -Raw)
+        query         = $(Get-Content "$($queryPath)\graphql\createServiceAccount.graphql" -Raw)
         variables     = @{
             name               = $Name
             scopes             = @($Scopes)

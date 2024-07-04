@@ -48,6 +48,7 @@ function Remove-PSWizCloudConfigurationRule {
     }
     
     process {
+        
         foreach ($item in $id) {
             $Query = @{
                 query = @"

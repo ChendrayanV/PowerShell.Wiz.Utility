@@ -40,10 +40,12 @@ function Get-PSWizServiceAccount {
         [string]
         $ClientId
     )
+
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
     
     $Query = [PSCustomObject]@{
         operationName = "getServiceAccount"
-        query         = $(Get-Content .\graphql\getServiceAccount.graphql -Raw)
+        query         = $(Get-Content "$($queryPath)\graphql\getServiceAccount.graphql" -Raw)
         variables     = @{
             clientId  = $ClientId
         }

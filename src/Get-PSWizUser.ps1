@@ -42,9 +42,11 @@ function Get-PSWizUser {
         $Source
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getUser"
-        query         = $(Get-Content .\graphql\getUser.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getUser.graphql" -Raw)
         variables     = @{
             source    = $Source
             endCursor = $null
@@ -56,7 +58,7 @@ function Get-PSWizUser {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getUser"
-            query         = $(Get-Content .\graphql\getUser.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getUser.graphql" -Raw)
             variables     = @{
                 source    = $Source
                 endCursor = $response.data.users.pageInfo.endCursor

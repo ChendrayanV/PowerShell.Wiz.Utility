@@ -38,9 +38,11 @@ function Get-PSWizProject {
         $BusinessImpact
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getProject"
-        query         = $(Get-Content .\graphql\getProject.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getProject.graphql" -Raw)
         variables     = @{
             impact    = $BusinessImpact
             endCursor = $null
@@ -52,7 +54,7 @@ function Get-PSWizProject {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getProject"
-            query         = $(Get-Content .\graphql\getProject.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getProject.graphql" -Raw)
             variables     = @{
                 impact    = $BusinessImpact
                 endCursor = $response.data.projects.pageInfo.endCursor

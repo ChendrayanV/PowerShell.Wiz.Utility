@@ -46,10 +46,11 @@ function Remove-PSWizCICDScan {
     }
     
     process {
+        $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
         foreach ($ScanId in $Id) {
             $Query = [PSCustomObject]@{
                 operationName = "deleteCICDScan"
-                query         = $(Get-Content .\graphql\deleteCICDScan.graphql -Raw)
+                query         = $(Get-Content -Path "$($queryPath)\graphql\deleteCICDScan.graphql" -Raw)
                 variables     = @{
                     id = $($ScanId)
                 }

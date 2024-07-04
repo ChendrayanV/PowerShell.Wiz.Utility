@@ -36,10 +36,10 @@ function Get-PSWizIssueV2 {
         [string]
         $ProjectId
     )
-    
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
     $Query = [PSCustomObject]@{
         operationName = "getIssuesV2"
-        query         = $(Get-Content .\graphql\getIssuesV2.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getIssuesV2.graphql" -Raw)
         variables     = @{
             projectId = @($ProjectId)
             endCursor = $null
@@ -51,7 +51,7 @@ function Get-PSWizIssueV2 {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getIssuesV2"
-            query         = $(Get-Content .\graphql\getIssuesV2.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getIssuesV2.graphql" -Raw)
             variables     = @{
                 projectId = @($ProjectId)
                 endCursor = $response.data.issuesV2.pageInfo.endCursor

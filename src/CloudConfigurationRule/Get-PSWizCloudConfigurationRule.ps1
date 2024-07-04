@@ -40,10 +40,12 @@ function Get-PSWizCloudConfigurationRule {
         [bool]
         $Enabled
     )
+
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
     
     $Query = [PSCustomObject]@{
         operationName = "getCloudConfigurationRule"
-        query         = $(Get-Content $PSScriptRoot\graphql\getCloudConfigurationRule.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getCloudConfigurationRule.graphql" -Raw)
         variables     = @{
             enabled   = $Enabled
             endCursor = $null
@@ -55,7 +57,7 @@ function Get-PSWizCloudConfigurationRule {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getCloudConfigurationRule"
-            query         = $(Get-Content .\graphql\getCloudConfigurationRule.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getCloudConfigurationRule.graphql" -Raw)
             variables     = @{
                 enabled   = $Enabled
                 endCursor = $response.data.cloudConfigurationRules.pageInfo.endCursor

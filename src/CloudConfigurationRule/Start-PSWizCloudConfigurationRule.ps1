@@ -47,10 +47,11 @@ function Start-PSWizCloudConfigurationRule {
     }
     
     process {
+        $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
         foreach ($Id in $ShortId) {
             $Query = [PSCustomObject]@{
                 operationName = "runCloudConfigurationRule"
-                query         = $(Get-Content .\graphql\runCloudConfigurationRule.graphql -Raw)
+                query         = $(Get-Content -Path "$($queryPath)\graphql\runCloudConfigurationRule.graphql" -Raw)
                 variables     = @{
                     id = $Id
                 }

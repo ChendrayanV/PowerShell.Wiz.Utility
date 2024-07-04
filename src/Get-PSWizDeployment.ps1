@@ -52,10 +52,10 @@ function Get-PSWizDeployment {
         [ValidateSet('Enabled' , 'Disabled')]
         $Status
     )
-    
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
     $Query = [PSCustomObject]@{
         operationName = "getDeployment"
-        query         = $(Get-Content .\graphql\getDeployment.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getDeployment.graphql" -Raw)
         variables     = @{
             endCursor = $null
         }
@@ -66,7 +66,7 @@ function Get-PSWizDeployment {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getDeployment"
-            query         = $(Get-Content .\graphql\getDeployment.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getDeployment.graphql" -Raw)
             variables     = @{
                 endCursor = $response.data.deployments.pageInfo.endCursor
             }

@@ -36,34 +36,35 @@ function Get-PSWizCLIRelease {
         [ValidateSet('WINDOWS', 'LINUX', 'DARWIN', 'DOCKER_LINUX')]
         $Platform
     )
+
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
     
     $Query = [PSCustomObject]@{
         operationName = "getCLIRelease"
-        query         = $(Get-Content .\graphql\getCLIRelease.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getCLIRelease.graphql" -Raw)
         variables     = @{
             platform  = $Platform
             endCursor = $null
         }
     } | ConvertTo-Json -Compress
+    
     $Collection = @()
-
+    
     while ($true) {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getCLIRelease"
-            query         = $(Get-Content .\graphql\getCLIRelease.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getCLIRelease.graphql" -Raw)
             variables     = @{
                 platform  = $Platform
                 endCursor = $response.data.cliReleases.pageInfo.endCursor
             }
         } | ConvertTo-Json -Compress
         $Collection += $response.data.cliReleases.nodes
-
         if ($response.data.cliReleases.pageInfo.hasNextPage -eq $false) {
             break
         }
     }
 
     $Collection
-    
 }

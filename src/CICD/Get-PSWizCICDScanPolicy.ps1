@@ -37,9 +37,11 @@ function Get-PSWizCICDScanPolicy {
         $BuiltIn
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getCICDScanPolicy"
-        query         = $(Get-Content .\graphql\getCICDScanPolicy.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getCICDScanPolicy.graphql" -Raw)
         variables     = @{
             builtIn   = $BuiltIn
             endCursor = $null
@@ -51,7 +53,7 @@ function Get-PSWizCICDScanPolicy {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getCICDScanPolicy"
-            query         = $(Get-Content .\graphql\getCICDScanPolicy.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getCICDScanPolicy.graphql" -Raw)
             variables     = @{
                 builtIn   = $BuiltIn
                 

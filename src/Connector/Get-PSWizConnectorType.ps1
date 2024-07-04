@@ -40,9 +40,11 @@ function Get-PSWizConnectorType {
         $Id
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getConnectorType"
-        query         = $(Get-Content .\graphql\getConnectorType.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getConnectorType.graphql" -Raw)
         
     } | ConvertTo-Json -Compress
     $Collection = @()
@@ -51,7 +53,7 @@ function Get-PSWizConnectorType {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getConnectorType"
-            query         = $(Get-Content .\graphql\getConnectorType.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getConnectorType.graphql" -Raw)
             
         } | ConvertTo-Json -Compress
         $Collection += $response.data.connectorTypes.nodes

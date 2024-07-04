@@ -47,9 +47,11 @@ function Get-PSWizConfigurationFinding {
         $Source
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getConfigurationFinding"
-        query         = $(Get-Content .\graphql\getConfigurationFinding.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getConfigurationFinding.graphql"-Raw)
         variables     = @{
             endCursor = $null
             status    = $Status
@@ -62,7 +64,7 @@ function Get-PSWizConfigurationFinding {
         $response = Invoke-RestMethod -Uri "https://api.$($Script:Data_Center).app.wiz.io/graphql" -Headers @{Authorization = "Bearer $($Script:Access_Token)" } -Method Post -Body $Query -ContentType 'application/json'
         $Query = [PSCustomObject]@{
             operationName = "getConfigurationFinding"
-            query         = $(Get-Content .\graphql\getConfigurationFinding.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getConfigurationFinding.graphql"-Raw)
             variables     = @{
                 endCursor = $response.data.configurationFindings.pageInfo.endCursor
                 status    = $Status

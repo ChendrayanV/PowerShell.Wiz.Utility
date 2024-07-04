@@ -41,9 +41,11 @@ function Get-PSWizConnector {
         $Enabled
     )
     
+    $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
+
     $Query = [PSCustomObject]@{
         operationName = "getConnector"
-        query         = $(Get-Content .\graphql\getConnector.graphql -Raw)
+        query         = $(Get-Content -Path "$($queryPath)\graphql\getConnector.graphql" -Raw)
         variables     = @{
             enabled   = $Enabled
             endCursor = $null
@@ -56,7 +58,7 @@ function Get-PSWizConnector {
         
         $Query = [PSCustomObject]@{
             operationName = "getConnector"
-            query         = $(Get-Content .\graphql\getConnector.graphql -Raw)
+            query         = $(Get-Content -Path "$($queryPath)\graphql\getConnector.graphql" -Raw)
             variables     = @{
                 enabled   = $Enabled
                 endCursor = $response.data.connectors.pageInfo.endCursor
