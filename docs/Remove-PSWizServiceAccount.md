@@ -1,4 +1,4 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
 online version:
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -65,11 +65,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String[]
-
 ## OUTPUTS
 
-### System.Object
+### PSCustomObject
+###     The function returns the result of the deletion operation for each service account ID.
+###     If there are errors, the function returns the error messages.
 ## NOTES
 
 ## RELATED LINKS

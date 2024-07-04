@@ -5,33 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-PSWizCloudConfigurationRule
+# Remove-PSWizCICDScan
 
 ## SYNOPSIS
-A short one-line action-based description, e.g.
-'Tests if a function is valid'
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Remove-PSWizCloudConfigurationRule [-Id] <String[]> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Remove-PSWizCICDScan [-Id] <String[]> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-A longer description of the function, its purpose, common use cases, etc.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
-Test-MyTestFunction -Verbose
-Explanation of the function or its result. You can include multiple examples with additional .EXAMPLE lines
-```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Id
-GUID of Cloud Configuration Rule
+{{ Fill Id Description }}
 
 ```yaml
 Type: String[]
@@ -68,13 +68,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### PSCustomObject
-###     The function returns the result of the deletion operation for each rule ID.
+###     The function returns the result of the deletion operation for each scan ID.
 ###     If there are errors, the function returns the error messages.
 ## NOTES
-Information or caveats about the function e.g.
-'This function is not supported in Linux'
 
 ## RELATED LINKS
-
-[Specify a URI to a help page, this will show when Get-Help -Online is used.]()
-

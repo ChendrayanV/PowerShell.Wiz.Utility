@@ -1,15 +1,14 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
-online version:
+online version: https://docs.wiz.io/cli-releases
 schema: 2.0.0
 ---
 
 # Get-PSWizCLIRelease
 
 ## SYNOPSIS
-A short one-line action-based description, e.g.
-'Tests if a function is valid'
+Retrieves the latest CLI release information for the specified platform.
 
 ## SYNTAX
 
@@ -18,20 +17,29 @@ Get-PSWizCLIRelease [[-Platform] <Object>] [-ProgressAction <ActionPreference>] 
 ```
 
 ## DESCRIPTION
-A longer description of the function, its purpose, common use cases, etc.
+The Get-PSWizCLIRelease cmdlet sends a GraphQL query to the Wiz API to retrieve the latest CLI release information for a specified platform.
+The available platforms include WINDOWS, LINUX, DARWIN, and DOCKER_LINUX.
+The cmdlet uses a paging mechanism to ensure all release data is collected if multiple pages of results are returned.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Test-MyTestFunction -Verbose
-Explanation of the function or its result. You can include multiple examples with additional .EXAMPLE lines
+Get-PSWizCLIRelease -Platform WINDOWS
+This example retrieves the latest CLI release information for the Windows platform.
+```
+
+### EXAMPLE 2
+```
+Get-PSWizCLIRelease -Platform LINUX
+This example retrieves the latest CLI release information for the Linux platform.
 ```
 
 ## PARAMETERS
 
 ### -Platform
-Provide a business impact, low, medium or high
+Specifies the platform for which to retrieve the CLI release information.
+Valid values are WINDOWS, LINUX, DARWIN, and DOCKER_LINUX.
 
 ```yaml
 Type: Object
@@ -67,11 +75,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### PSCustomObject
+###     The function returns a collection of CLI release information based on the specified platform.
 ## NOTES
-Information or caveats about the function e.g.
-'This function is not supported in Linux'
+This function requires an active access token stored in the global variable $Access_Token and the data center information stored in the global variable $Data_Center.
+The function reads a GraphQL query from a file named getCLIRelease.graphql located in the .\graphql\ directory.
 
 ## RELATED LINKS
 
-[Specify a URI to a help page, this will show when Get-Help -Online is used.]()
+[https://docs.wiz.io/cli-releases](https://docs.wiz.io/cli-releases)
 

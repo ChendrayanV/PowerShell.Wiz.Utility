@@ -1,4 +1,39 @@
 function Get-PSWizCloudConfigurationRule {
+    <#
+    .SYNOPSIS
+        Retrieves cloud configuration rules from the Wiz platform based on their enabled state.
+
+    .DESCRIPTION
+        The Get-PSWizCloudConfigurationRule function fetches cloud configuration rules from the Wiz platform's API.
+        It filters the rules based on whether they are enabled or not, as specified by the user.
+
+    .PARAMETER Enabled
+        Specifies whether to retrieve enabled or disabled cloud configuration rules.
+        This parameter is mandatory and part of the 'Enabled' parameter set.
+        Valid values: $true, $false
+
+    .EXAMPLE
+        Get-PSWizCloudConfigurationRule -Enabled $true
+        This example retrieves all enabled cloud configuration rules.
+
+    .EXAMPLE
+        Get-PSWizCloudConfigurationRule -Enabled $false
+        This example retrieves all disabled cloud configuration rules.
+
+    .OUTPUTS
+        PSCustomObject
+            The function returns a collection of cloud configuration rules based on the specified enabled state.
+
+    .NOTES
+        The function constructs a GraphQL query from a local file named getCloudConfigurationRule.graphql located in the .\graphql\ directory.
+        The function uses a loop to handle pagination and retrieve all pages of results.
+        Authentication details ($Script:Access_Token and $Script:Data_Center) must be available in the script scope.
+        PowerShell 5.0 or higher is required.
+
+    .LINK
+        https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
+    #>
+
     [CmdletBinding()]
     param (
         [Parameter(Mandatory,ParameterSetName='Enabled')]

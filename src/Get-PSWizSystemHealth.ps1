@@ -1,10 +1,31 @@
 function Get-PSWizSystemHealth {
-    # [CmdletBinding()]
-    # param (
-    #     [Parameter(HelpMessage = "Provide a business impact, low, medium or high")]
-    #     [ValidateSet('LBI', 'MBI', 'HBI')]
-    #     $BusinessImpact
-    # )
+    <#
+    .SYNOPSIS
+        Retrieves system health issues from the Wiz platform.
+
+    .DESCRIPTION
+        The Get-PSWizSystemHealth function fetches system health issues from the Wiz platform's API.
+        It retrieves all system health issues and compiles them into a collection with specific details.
+
+    .EXAMPLE
+        Get-PSWizSystemHealth
+        This example retrieves all system health issues from the Wiz platform.
+
+    .OUTPUTS
+        PSCustomObject
+            The function returns a collection of system health issues with details including
+            ID, name, deployment ID, deployment name, deployment type, severity, and the last seen timestamp.
+
+    .NOTES
+        The function constructs a GraphQL query from a local file named getSystemHealthIssue.graphql located in the .\graphql\ directory.
+        The function uses a loop to handle pagination and retrieve all pages of results.
+        Authentication details ($Script:Access_Token and $Script:Data_Center) must be available in the script scope.
+        PowerShell 5.0 or higher is required.
+
+    .LINK
+        https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
+    #>
+
     
     $Query = [PSCustomObject]@{
         operationName = "getSystemHealthIssue"

@@ -1,31 +1,35 @@
 function Get-PSWizCLIRelease {
     <#
     .SYNOPSIS
-        Retrieves the latest CLI release information for the specified platform.
+        Retrieves CLI release information from the Wiz platform based on the specified platform.
 
     .DESCRIPTION
-        The Get-PSWizCLIRelease cmdlet sends a GraphQL query to the Wiz API to retrieve the latest CLI release information for a specified platform. The available platforms include WINDOWS, LINUX, DARWIN, and DOCKER_LINUX. The cmdlet uses a paging mechanism to ensure all release data is collected if multiple pages of results are returned.
+        The Get-PSWizCLIRelease function fetches CLI release information from the Wiz platform's API.
+        It allows filtering of CLI releases based on the specified platform, such as WINDOWS, LINUX, DARWIN, or DOCKER_LINUX.
 
     .PARAMETER Platform
-        Specifies the platform for which to retrieve the CLI release information. Valid values are WINDOWS, LINUX, DARWIN, and DOCKER_LINUX.
+        Specifies the platform for which to retrieve CLI release information.
+        Valid values: 'WINDOWS', 'LINUX', 'DARWIN', 'DOCKER_LINUX'
+        This parameter is optional and helps to filter the results based on the platform.
 
     .EXAMPLE
-        PS C:\> Get-PSWizCLIRelease -Platform WINDOWS
-        This example retrieves the latest CLI release information for the Windows platform.
+        Get-PSWizCLIRelease -Platform "WINDOWS"
+        This example retrieves all CLI releases for the Windows platform.
 
-    .EXAMPLE
-        PS C:\> Get-PSWizCLIRelease -Platform LINUX
-        This example retrieves the latest CLI release information for the Linux platform.
+    .OUTPUTS
+        PSCustomObject
+            The function returns a collection of CLI release information based on the specified platform.
 
     .NOTES
-        This function requires an active access token stored in the global variable $Access_Token and the data center information stored in the global variable $Data_Center. The function reads a GraphQL query from a file named getCLIRelease.graphql located in the .\graphql\ directory.
+        The function constructs a GraphQL query from a local file named getCLIRelease.graphql located in the .\graphql\ directory.
+        The function uses a loop to handle pagination and retrieve all pages of results.
+        Authentication details ($Script:Access_Token and $Script:Data_Center) must be available in the script scope.
+        PowerShell 5.0 or higher is required.
 
     .LINK
-        https://docs.wiz.io/cli-releases
+        https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
     #>
 
-    
-    
     [CmdletBinding()]
     param (
         [Parameter(HelpMessage = "Provide a business impact, low, medium or high")]

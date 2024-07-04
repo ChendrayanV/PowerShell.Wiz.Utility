@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-PSWizCloudConfigurationRule
+# Get-PSWizCICDScanPolicy
 
 ## SYNOPSIS
 A short one-line action-based description, e.g.
@@ -14,7 +14,7 @@ A short one-line action-based description, e.g.
 ## SYNTAX
 
 ```
-Remove-PSWizCloudConfigurationRule [-Id] <String[]> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-PSWizCICDScanPolicy [-BuiltIn] <Boolean> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,18 +30,18 @@ Explanation of the function or its result. You can include multiple examples wit
 
 ## PARAMETERS
 
-### -Id
-GUID of Cloud Configuration Rule
+### -BuiltIn
+{{ Fill BuiltIn Description }}
 
 ```yaml
-Type: String[]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -68,8 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### PSCustomObject
-###     The function returns the result of the deletion operation for each rule ID.
-###     If there are errors, the function returns the error messages.
+###     The function returns a collection of CICD scan policies based on the specified filter.
 ## NOTES
 Information or caveats about the function e.g.
 'This function is not supported in Linux'

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
 online version:
@@ -8,7 +8,8 @@ schema: 2.0.0
 # New-PSWizServiceAccountSecret
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+A short one-line action-based description, e.g.
+'Tests if a function is valid'
 
 ## SYNTAX
 
@@ -17,16 +18,15 @@ New-PSWizServiceAccountSecret [[-ClientID] <Object>] [-ProgressAction <ActionPre
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+A longer description of the function, its purpose, common use cases, etc.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Test-MyTestFunction -Verbose
+Explanation of the function or its result. You can include multiple examples with additional .EXAMPLE lines
+```
 
 ## PARAMETERS
 
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,11 +65,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### PSCustomObject
+###     The function returns the details of the service account with the new secret.
+###     If there are errors, the function returns the error messages.
 ## NOTES
+Information or caveats about the function e.g.
+'This function is not supported in Linux'
 
 ## RELATED LINKS
+
+[Specify a URI to a help page, this will show when Get-Help -Online is used.]()
+

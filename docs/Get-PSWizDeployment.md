@@ -1,7 +1,7 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
-online version:
+online version: https://docs.wiz.io/cli-releases
 schema: 2.0.0
 ---
 
@@ -51,22 +51,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status
-Shows Enabled or Disabled status of the deployment
-
-```yaml
-Type: Object
-Parameter Sets: Status
-Aliases:
-Accepted values: Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
 
@@ -82,16 +66,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Status
+Shows Enabled or Disabled status of the deployment
+
+```yaml
+Type: Object
+Parameter Sets: Status
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### PSCustomObject
+###     The function returns a collection of deployments.
+###     If the All parameter is specified, all deployments are returned.
+###     If the Status parameter is specified, deployments are filtered based on the provided status.
 ## NOTES
 
 ## RELATED LINKS

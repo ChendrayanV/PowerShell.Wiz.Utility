@@ -1,19 +1,35 @@
 function Get-PSWizCICDScanPolicy {
     <#
     .SYNOPSIS
-        A short one-line action-based description, e.g. 'Tests if a function is valid'
+        Retrieves CICD scan policies from the Wiz platform based on whether they are built-in or custom.
+
     .DESCRIPTION
-        A longer description of the function, its purpose, common use cases, etc.
-    .NOTES
-        Information or caveats about the function e.g. 'This function is not supported in Linux'
-    .LINK
-        Specify a URI to a help page, this will show when Get-Help -Online is used.
+        The Get-PSWizCICDScanPolicy function fetches CICD scan policies from the Wiz platform's API.
+        It allows filtering of scan policies based on whether they are built-in or custom policies.
+
+    .PARAMETER BuiltIn
+        Specifies whether to retrieve built-in scan policies.
+        This parameter is mandatory.
+        Valid values: $true, $false
+
     .EXAMPLE
-        Test-MyTestFunction -Verbose
-        Explanation of the function or its result. You can include multiple examples with additional .EXAMPLE lines
+        Get-PSWizCICDScanPolicy -BuiltIn $true
+        This example retrieves all built-in CICD scan policies.
+
+    .OUTPUTS
+        PSCustomObject
+            The function returns a collection of CICD scan policies based on the specified filter.
+
+    .NOTES
+        The function constructs a GraphQL query from a local file named getCICDScanPolicy.graphql located in the .\graphql\ directory.
+        The function uses a loop to handle pagination and retrieve all pages of results.
+        Authentication details ($Script:Access_Token and $Script:Data_Center) must be available in the script scope.
+        PowerShell 5.0 or higher is required.
+
+    .LINK
+        https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
     #>
-    
-    
+
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]

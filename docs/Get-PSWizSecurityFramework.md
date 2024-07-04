@@ -1,7 +1,7 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
-online version:
+online version: https://docs.wiz.io/cli-releases
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,11 +65,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### PSCustomObject
+###     The function returns a collection of security frameworks.
+###     If the BuiltIn parameter is specified, the collection is filtered based on its value.
 ## NOTES
 
 ## RELATED LINKS

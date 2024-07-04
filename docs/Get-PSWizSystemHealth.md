@@ -1,7 +1,7 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
-online version:
+online version: https://docs.wiz.io/cli-releases
 schema: 2.0.0
 ---
 
@@ -35,11 +35,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### PSCustomObject
+###     The function returns a collection of system health issues with details including
+###     ID, name, deployment ID, deployment name, deployment type, severity, and the last seen timestamp.
 ## NOTES
 
 ## RELATED LINKS

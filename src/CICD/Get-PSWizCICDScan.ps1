@@ -1,18 +1,34 @@
 function Get-PSWizCICDScan {
     <#
     .SYNOPSIS
-        A short one-line action-based description, e.g. 'Tests if a function is valid'
+        Retrieves CICD scan results from the Wiz platform based on the specified state.
+
     .DESCRIPTION
-        A longer description of the function, its purpose, common use cases, etc.
-    .NOTES
-        Information or caveats about the function e.g. 'This function is not supported in Linux'
-    .LINK
-        Specify a URI to a help page, this will show when Get-Help -Online is used.
+        The Get-PSWizCICDScan function fetches CICD scan results from the Wiz platform's API. 
+        It allows filtering of scan results based on their state, such as SUCCESS, FAILURE, PENDING, or SKIPPED.
+
+    .PARAMETER State
+        Specifies the state of the CICD scans to retrieve.
+        This parameter is mandatory.
+        Valid values: 'SUCCESS', 'FAILURE', 'PENDING', 'SKIPPED'
+
     .EXAMPLE
-        Test-MyTestFunction -Verbose
-        Explanation of the function or its result. You can include multiple examples with additional .EXAMPLE lines
+        Get-PSWizCICDScan -State "SUCCESS"
+        This example retrieves all CICD scans that have completed successfully.
+
+    .OUTPUTS
+        PSCustomObject
+            The function returns a collection of CICD scan results matching the specified state.
+
+    .NOTES
+        The function constructs a GraphQL query from a local file named getCICDScan.graphql located in the .\graphql\ directory.
+        The function uses a loop to handle pagination and retrieve all pages of results.
+        Authentication details ($Script:Access_Token and $Script:Data_Center) must be available in the script scope.
+        PowerShell 5.0 or higher is required.
+
+    .LINK
+        https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
     #>
-    
     
     [CmdletBinding()]
     param (

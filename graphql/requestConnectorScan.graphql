@@ -1,0 +1,17 @@
+mutation requestConnectorScan(
+  $id: String!
+  $omitSecurityToolScan: Boolean
+  $omitDataScan: Boolean
+) {
+  requestConnectorScan(
+    input: {
+      id: $id
+      omitSecurityToolScan: $omitSecurityToolScan
+      omitDataScan: $omitDataScan
+    }
+  ) {
+    scan {
+      id
+    }
+  }
+}

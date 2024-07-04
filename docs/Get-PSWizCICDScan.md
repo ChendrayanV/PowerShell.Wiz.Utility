@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-PSWizCloudConfigurationRule
+# Get-PSWizCICDScan
 
 ## SYNOPSIS
 A short one-line action-based description, e.g.
@@ -14,7 +14,7 @@ A short one-line action-based description, e.g.
 ## SYNTAX
 
 ```
-Remove-PSWizCloudConfigurationRule [-Id] <String[]> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-PSWizCICDScan [-State] <Object> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +29,6 @@ Explanation of the function or its result. You can include multiple examples wit
 ```
 
 ## PARAMETERS
-
-### -Id
-GUID of Cloud Configuration Rule
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
 
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
@@ -60,6 +45,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -State
+{{ Fill State Description }}
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -68,8 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### PSCustomObject
-###     The function returns the result of the deletion operation for each rule ID.
-###     If there are errors, the function returns the error messages.
+###     The function returns a collection of CICD scan results matching the specified state.
 ## NOTES
 Information or caveats about the function e.g.
 'This function is not supported in Linux'

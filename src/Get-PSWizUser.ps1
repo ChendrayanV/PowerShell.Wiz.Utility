@@ -1,8 +1,43 @@
 function Get-PSWizUser {
-    
+    <#
+    .SYNOPSIS
+        Retrieves user information from the Wiz platform based on the specified source.
+
+    .DESCRIPTION
+        The Get-PSWizUser function fetches user information from the Wiz platform's API.
+        It retrieves all users filtered by the specified source, either 'MODERN' or 'LEGACY'.
+
+    .PARAMETER Source
+        Specifies the source of the users to retrieve.
+        Valid values: 'MODERN', 'LEGACY'
+        This parameter is mandatory.
+        HelpMessage: Modern or Legacy
+
+    .EXAMPLE
+        Get-PSWizUser -Source 'MODERN'
+        This example retrieves all users from the 'MODERN' source.
+
+    .EXAMPLE
+        Get-PSWizUser -Source 'LEGACY'
+        This example retrieves all users from the 'LEGACY' source.
+
+    .OUTPUTS
+        PSCustomObject
+            The function returns a collection of users based on the specified source.
+
+    .NOTES
+        The function constructs a GraphQL query from a local file named getUser.graphql located in the .\graphql\ directory.
+        The function uses a loop to handle pagination and retrieve all pages of results.
+        Authentication details ($Script:Access_Token and $Script:Data_Center) must be available in the script scope.
+        PowerShell 5.0 or higher is required.
+
+    .LINK
+        https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
+    #>
+
     [CmdletBinding()]
     param (
-        [Parameter(HelpMessage = "Project GUID")]
+        [Parameter(Mandatory, HelpMessage = "Modern or Legacy")]
         [ValidateSet('MODERN' , 'LEGACY')]
         $Source
     )

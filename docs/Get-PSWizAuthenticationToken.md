@@ -1,4 +1,4 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
 online version:
@@ -83,6 +83,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### None
+###     The function sets the authentication token and data center information in script scope variables.
 ## NOTES
 The retrieved access token is stored in the global variable $Access_Token.
 The data center information extracted from the token is stored in the global variable $Data_Center.

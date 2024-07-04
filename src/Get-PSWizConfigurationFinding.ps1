@@ -1,38 +1,39 @@
 function Get-PSWizConfigurationFinding {
     <#
     .SYNOPSIS
-        Retrieves configuration findings from a specified source with a given status.
+        Retrieves configuration findings from the Wiz platform based on specified status and source.
 
     .DESCRIPTION
-        The Get-PSWizConfigurationFinding cmdlet queries the Wiz API to retrieve configuration findings based on the specified status and source. The findings are retrieved using a GraphQL query and are returned as a collection.
+        The Get-PSWizConfigurationFinding function fetches configuration findings from the Wiz platform's API.
+        It filters findings based on their status and source, such as 'OPEN', 'IN_PROGRESS', 'RESOLVED', 'REJECTED'
+        for status, and 'WIZ_CSPM', 'ASC', 'AWSInspector' for source.
 
     .PARAMETER Status
-        Specifies the status of the configuration findings to retrieve. Valid values are:
-            - OPEN
-            - IN_PROGRESS
-            - RESOLVED
-            - REJECTED
+        Specifies the status of the configuration findings to retrieve.
+        Valid values: 'OPEN', 'IN_PROGRESS', 'RESOLVED', 'REJECTED'
+        This parameter is mandatory.
 
     .PARAMETER Source
-        Specifies the source of the configuration findings. Valid values are:
-            - WIZ_CSPM
-            - ASC
-            - AWSInspector
+        Specifies the source of the configuration findings to retrieve.
+        Valid values: 'WIZ_CSPM', 'ASC', 'AWSInspector'
+        This parameter is mandatory.
 
     .EXAMPLE
-        Get-PSWizConfigurationFinding -Status OPEN -Source WIZ_CSPM
-        This command retrieves all configuration findings with the status 'OPEN' from the source 'WIZ_CSPM'.
-
-    .EXAMPLE
-        Get-PSWizConfigurationFinding -Status RESOLVED -Source AWSInspector
-        This command retrieves all configuration findings with the status 'RESOLVED' from the source 'AWSInspector'.
+        Get-PSWizConfigurationFinding -Status 'OPEN' -Source 'WIZ_CSPM'
+        This example retrieves all configuration findings that are open and sourced from WIZ_CSPM.
 
     .OUTPUTS
-        System.Object
-        Returns a collection of configuration findings.
+        PSCustomObject
+            The function returns a collection of configuration findings based on the specified status and source.
 
     .NOTES
-        Author : Chendrayan Venkatesan (Chen V)
+        The function constructs a GraphQL query from a local file named getConfigurationFinding.graphql located in the .\graphql\ directory.
+        The function uses a loop to handle pagination and retrieve all pages of results.
+        Authentication details ($Script:Access_Token and $Script:Data_Center) must be available in the script scope.
+        PowerShell 5.0 or higher is required.
+
+    .LINK
+        https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
     #>
 
     [CmdletBinding()]

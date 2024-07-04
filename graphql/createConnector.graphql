@@ -1,0 +1,24 @@
+mutation createConnector(
+  $name: String!
+  $type: ID!
+  $enabled: Boolean
+  $authParams: JSON!
+) {
+  createConnector(
+    input: {
+      name: $name
+      type: $type
+      enabled: $enabled
+      authParams: $authParams
+    }
+  ) {
+    connector {
+      id
+      name
+      enabled
+      status
+      status
+      errorCode
+    }
+  }
+}
