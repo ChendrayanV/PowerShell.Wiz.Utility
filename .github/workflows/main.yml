@@ -3,28 +3,24 @@ name: Publish PowerShell Module
 on: push
 
 jobs:
-  # pester-test:
-  #   name: Pester test
-  #   runs-on: windows-latest
-  #   steps:
-  #     - name: Check out repository code
-  #       uses: actions/checkout@v4
-  #     - name: Perform a Pester test
-  #       env:
-  #         Wiz_CLIENT_ID = ${{secrets.Wiz_CLIENT_ID}}
-  #         Wiz_CLIENT_SECRET = ${{}}
-  #       shell: pwsh
-  #       run: |
-  #         # Invoke-Pester -Script .\tests\ -Output Detailed
-  #         Get-Date
-
-  publish-to-gallery:
-    runs-on: windows-latest
+  pester-test:
+    name: Pester test
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish
-        env:
-          NUGET_KEY: $PS_GALLERY_KEY
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Perform a Pester test from the Tests.ps1 file
         shell: pwsh
         run: |
-          Publish-Module -Path . -NuGetApiKey ${{secrets.PS_GALLERY_KEY}} -Verbose
+          Invoke-Pester .\tests\ 
+
+  # publish-to-gallery:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Publish
+  #       env:
+  #         NUGET_KEY: $PS_GALLERY_KEY
+  #       shell: pwsh
+  #       run: |
+  #         Publish-Module -Path . -NuGetApiKey ${{secrets.PS_GALLERY_KEY}} -Verbose

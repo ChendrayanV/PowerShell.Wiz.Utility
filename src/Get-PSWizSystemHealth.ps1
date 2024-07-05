@@ -58,6 +58,7 @@ function Get-PSWizSystemHealth {
             [PSCustomObject]@{
                 Id             = $($_.id)
                 Name           = $($_.name)
+                Status         = $($_.Status)
                 DeploymentId   = $($_.deployment.id)
                 DeploymentName = $($_.deployment.name)
                 DeploymentType = $($_.deployment.type)

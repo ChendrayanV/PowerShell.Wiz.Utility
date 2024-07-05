@@ -1,0 +1,6 @@
+mutation deleteConnector($id: ID!) {
+  deleteConnector(input: { id: $id }) {
+    _stub
+    __typename
+  }
+}
