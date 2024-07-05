@@ -2,6 +2,8 @@
 
 ## Overview
 
+<img src="" width="100" height="100">
+
 PowerShell.Wiz.Utility is a PowerShell module designed to facilitate interaction with Wiz tenants. This utility provides a collection of cmdlets that enable users to manage and retrieve various resources and configurations from Wiz.
 
 ## Disclaimer

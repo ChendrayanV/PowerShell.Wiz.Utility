@@ -104,7 +104,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/ChendrayanV/PowerShell.Wiz.Utility'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://raw.githubusercontent.com/ChendrayanV/PowerShell.Wiz.Utility/main/img/Wiz-Wuggie.jpg'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
