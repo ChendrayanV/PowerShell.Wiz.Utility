@@ -1,0 +1,11 @@
+mutation enableConnector($id: ID!) {
+  updateConnector(input: { id: $id, patch: { enabled: true } }) {
+    connector {
+      id
+      name
+      status
+      enabled
+      errorCode
+    }
+  }
+}

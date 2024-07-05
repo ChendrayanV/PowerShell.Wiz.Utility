@@ -13,8 +13,8 @@ Creates a new connector in the Wiz platform using the provided parameters.
 ## SYNTAX
 
 ```
-New-PSWizConnector [-Name] <Object> [-Type] <Object> [-Enabled] <Object> [-IsManagedIdentity] <Object>
- [-SubscriptionId] <Object> [-TenantId] <Object> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-PSWizConnector [-Name] <Object> [-Type] <Object> [-SubscriptionId] <Object> [-TenantId] <Object>
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,40 +33,6 @@ This example creates a new Azure connector named "MyConnector" that is enabled a
 ```
 
 ## PARAMETERS
-
-### -Enabled
-Specifies whether the connector is enabled.
-This parameter is mandatory.
-Valid values: 'true', 'false'
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IsManagedIdentity
-Specifies whether the connector uses managed identity.
-This parameter is mandatory.
-Valid values: 'true', 'false'
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies the name of the connector to be created.
@@ -109,7 +75,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -125,7 +91,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -157,7 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### PSCustomObject
-###     If the connector creation is successful, the function returns the details of the created connector.
+###     The function returns the details of the created connector.
 ###     If there are errors, the function returns the error messages.
 ## NOTES
 The function reads the GraphQL query template from a local file named createConnector.graphql located in the .\graphql\ directory.

@@ -14,6 +14,9 @@ Locale: en-US
 ### [Add-PSWizServiceAccount](Add-PSWizServiceAccount.md)
 {{ Fill in the Synopsis }}
 
+### [Disable-PSWizConnector](Disable-PSWizConnector.md)
+Disables specified connectors in the Wiz platform.
+
 ### [Get-PSWizAuthenticationToken](Get-PSWizAuthenticationToken.md)
 Retrieves an authentication token from Wiz API using client credentials.
 
@@ -74,6 +77,9 @@ A short one-line action-based description, e.g.
 ### [Remove-PSWizCloudConfigurationRule](Remove-PSWizCloudConfigurationRule.md)
 A short one-line action-based description, e.g.
 'Tests if a function is valid'
+
+### [Remove-PSWizConnector](Remove-PSWizConnector.md)
+Removes specified connectors from the Wiz platform.
 
 ### [Remove-PSWizServiceAccount](Remove-PSWizServiceAccount.md)
 {{ Fill in the Synopsis }}
