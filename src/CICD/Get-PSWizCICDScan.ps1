@@ -32,9 +32,9 @@ function Get-PSWizCICDScan {
     
     [CmdletBinding()]
     param (
+
         [Parameter(Mandatory)]
-        [ValidateSet('SUCCESS', 'FAILURE', 'PENDING', 'SKIPPED')]
-        $State
+        $ServiceAccount
     )
     
     $queryPath = $(Split-Path -Path $Script:MyInvocation.MyCommand.Path -Parent)
@@ -43,8 +43,8 @@ function Get-PSWizCICDScan {
         operationName = "getCICDScan"
         query         = $(Get-Content -Path "$($queryPath)\graphql\getCICDScan.graphql" -Raw)
         variables     = @{
-            state     = $State
-            endCursor = $null
+            serviceAccount = $ServiceAccount
+            endCursor      = $null
         }
     } | ConvertTo-Json -Compress
     $Collection = @()
@@ -55,8 +55,8 @@ function Get-PSWizCICDScan {
             operationName = "getCICDScan"
             query         = $(Get-Content -Path "$($queryPath)\graphql\getCICDScan.graphql" -Raw)
             variables     = @{
-                state     = $State
-                endCursor = $response.data.cicdScans.pageInfo.endCursor
+                serviceAccount = $ServiceAccount
+                endCursor      = $response.data.cicdScans.pageInfo.endCursor
             }
         } | ConvertTo-Json -Compress
         $Collection += $response.data.cicdScans.nodes

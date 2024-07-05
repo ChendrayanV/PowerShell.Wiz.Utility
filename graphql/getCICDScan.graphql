@@ -1,5 +1,9 @@
-query getCICDScan($endCursor: String, $state: [CICDScanState!]) {
-  cicdScans(first: 500, after: $endCursor, filterBy: { state: $state }) {
+query getCICDScan($endCursor: String, $serviceAccount: String) {
+  cicdScans(
+    first: 500
+    after: $endCursor
+    filterBy: {createdBy: {serviceAccount: $serviceAccount}}
+  ) {
     pageInfo {
       endCursor
       hasNextPage
