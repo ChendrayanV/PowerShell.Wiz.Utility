@@ -2,7 +2,9 @@
 
 ## Overview
 
-<img src="" width="100" height="100">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ChendrayanV/PowerShell.Wiz.Utility/main/img/Wiz-Small.jpg" alt="Wiz Wuggies!"/>
+</p>
 
 PowerShell.Wiz.Utility is a PowerShell module designed to facilitate interaction with Wiz tenants. This utility provides a collection of cmdlets that enable users to manage and retrieve various resources and configurations from Wiz.
 
@@ -23,31 +25,38 @@ Install-Module -Name PowerShell.Wiz.Utility
 Below is a list of available cmdlets in this module:
 
 ### Authentication
- 
+
 - **Get-PSWizAuthenticationToken.ps1**
   - Retrieves the authentication token for the connected Wiz tenant.
 
 ### Information Retrieval
 
 - **Get-PSWizCLIRelease.ps1**
+
   - Retrieves the latest release information of the Wiz CLI.
 
 - **Get-PSWizCloudConfigurationRule.ps1**
+
   - Retrieves cloud configuration rules from Wiz.
 
 - **Get-PSWizConfigurationFinding.ps1**
+
   - Retrieves configuration findings from Wiz.
 
 - **Get-PSWizDeployment.ps1**
+
   - Retrieves deployment information from Wiz.
 
 - **Get-PSWizProject.ps1**
+
   - Retrieves project details from Wiz.
 
 - **Get-PSWizSecurityFramework.ps1**
+
   - Retrieves security framework details from Wiz.
 
 - **Get-PSWizSystemHealth.ps1**
+
   - Retrieves system health information from Wiz.
 
 - **Get-WizVersion.ps1**
@@ -65,7 +74,7 @@ Here are some examples of how to use the cmdlets:
 ### Connect to Wiz Tenant
 
 ```powershell
-Get-PSWizAuthenticationToken -ClientID $ENV:Wiz_CLIENT_ID -ClientSecret $ENV:Wiz_CLIENT_SECRET 
+Get-PSWizAuthenticationToken -ClientID $ENV:Wiz_CLIENT_ID -ClientSecret $ENV:Wiz_CLIENT_SECRET
 ```
 
 ### Retrieve System Health
@@ -73,7 +82,6 @@ Get-PSWizAuthenticationToken -ClientID $ENV:Wiz_CLIENT_ID -ClientSecret $ENV:Wiz
 ```powershell
 Get-PSWizSystemHealth
 ```
-
 
 ### Remove a Cloud Configuration Rule
 
