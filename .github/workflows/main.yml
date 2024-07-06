@@ -15,13 +15,13 @@ jobs:
           $pesterContainer = New-PesterContainer -Path ".\tests\PowerShell.Wiz.Utility.Tests.ps1" -Data @{ ClientID = "${{secrets.WIZ_CLIENT_ID}}"; ClientSecret = "${{secrets.WIZ_CLIENT_SECRET}}" }
           Invoke-Pester -Container $pesterContainer
 
-  # publish-to-gallery:
-  #   runs-on: windows-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Publish
-  #       env:
-  #         NUGET_KEY: $PS_GALLERY_KEY
-  #       shell: pwsh
-  #       run: |
-  #         Publish-Module -Path . -NuGetApiKey ${{secrets.PS_GALLERY_KEY}} -Verbose
+  publish-to-gallery:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish
+        env:
+          NUGET_KEY: $PS_GALLERY_KEY
+        shell: pwsh
+        run: |
+          Publish-Module -Path . -NuGetApiKey ${{secrets.PS_GALLERY_KEY}} -Verbose
