@@ -1,6 +1,9 @@
 name: Publish PowerShell Module
 
-on: push
+on:
+  push:
+    branches: 
+      - main
 
 jobs:
   pester-test:
