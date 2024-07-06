@@ -12,7 +12,7 @@ jobs:
       - name: Perform a Pester test from the Tests.ps1 file
         shell: pwsh
         run: |
-          $pesterContainer = New-PesterContainer -Path ".\tests\PowerShell.Wiz.Utility.Tests.ps1" -Data @{ ClientID = ${{secrets.WIZ_CLIENT_ID}}; ClientSecret = ${{secrets.WIZ_CLIENT_SECRET}} }
+          $pesterContainer = New-PesterContainer -Path ".\tests\PowerShell.Wiz.Utility.Tests.ps1" -Data @{ ClientID = "${{secrets.WIZ_CLIENT_ID}}"; ClientSecret = "${{secrets.WIZ_CLIENT_SECRET}}" }
           Invoke-Pester -Container $pesterContainer
 
   # publish-to-gallery:
