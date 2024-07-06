@@ -1,5 +1,7 @@
 param (
-    $Param1
+    $ClientID,
+
+    $ClientSecret
 )
 
 Import-Module "$PSScriptRoot\..\PowerShell.Wiz.Utility.psd1" -Verbose -Force
@@ -7,7 +9,7 @@ Import-Module "$PSScriptRoot\..\PowerShell.Wiz.Utility.psd1" -Verbose -Force
 
 Describe "PowerShell.Wiz.Utilty" {
     
-    It "dummt test" {
-        $Param1 | Should -BeExactly 1
+    It "Wiz Authentication" {
+        Get-PSWizAuthenticationToken -ClientID 'sds' -ClientSecret 'sdsd' | Should -BeNullOrEmpty
     }
 }
