@@ -13,7 +13,7 @@ jobs:
         shell: pwsh
         run: |
           $pesterContainer = New-PesterContainer -Path ".\tests\PowerShell.Wiz.Utility.Tests.ps1" -Data @{ param = 1 }
-          Invoke-Pester .\tests\ 
+          Invoke-Pester -Container $pesterContainer
 
   # publish-to-gallery:
   #   runs-on: windows-latest
