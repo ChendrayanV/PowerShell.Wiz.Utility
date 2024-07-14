@@ -52,8 +52,14 @@ Retrieves configuration findings from a specified source with a given status.
 ### [Get-PSWizDeployment](Get-PSWizDeployment.md)
 {{ Fill in the Synopsis }}
 
+### [Get-PSWizHostConfigurationRule](Get-PSWizHostConfigurationRule.md)
+Retrieves host configuration rules from the Wiz API using GraphQL queries.
+
 ### [Get-PSWizIssueV2](Get-PSWizIssueV2.md)
 {{ Fill in the Synopsis }}
+
+### [Get-PSWizLicenseUsage](Get-PSWizLicenseUsage.md)
+Retrieves license usage information for the specified date range from the PSWiz API.
 
 ### [Get-PSWizProject](Get-PSWizProject.md)
 {{ Fill in the Synopsis }}
@@ -69,6 +75,9 @@ Retrieves configuration findings from a specified source with a given status.
 
 ### [Get-PSWizUser](Get-PSWizUser.md)
 {{ Fill in the Synopsis }}
+
+### [Invoke-PSWizCloudRegoRuleTestWithJson](Invoke-PSWizCloudRegoRuleTestWithJson.md)
+Invokes a PSWiz Cloud Rego rule test using the provided JSON configuration.
 
 ### [New-PSWizConnector](New-PSWizConnector.md)
 Creates a new connector in the Wiz platform using the provided parameters.
