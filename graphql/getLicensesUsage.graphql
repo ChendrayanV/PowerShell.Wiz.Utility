@@ -1,0 +1,22 @@
+query getLicensesUsage(
+  $monthStartDate: DateTime!
+  $monthEndDate: DateTime!
+  $project: [String!]
+) {
+  billableWorkloadTrend(
+    startDate: $monthStartDate
+    endDate: $monthEndDate
+    project: $project
+  ) {
+    licensedWorkloadQuota
+    totalWorkloadCount
+    averageComputeWorkloadCount
+    averageSensorWorkloadCount
+    monthlyAverageDSPMWorkloadCount
+    monthlyAverageNonOSDiskWorkloadCount
+    monthlyAverageRegistryContainerImageWorkloadCount
+    monthlyAverageComputeScansWorkloadCount
+    __typename
+  }
+  
+}
