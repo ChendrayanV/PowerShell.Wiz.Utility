@@ -14,7 +14,7 @@ A short one-line action-based description, e.g.
 ## SYNTAX
 
 ```
-Get-PSWizCICDScan [-State] <Object> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-PSWizCICDScan [-ServiceAccount] <Object> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,8 +45,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-{{ Fill State Description }}
+### -ServiceAccount
+{{ Fill ServiceAccount Description }}
 
 ```yaml
 Type: Object
