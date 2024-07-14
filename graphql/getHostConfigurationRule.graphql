@@ -1,0 +1,24 @@
+query gethostConfigurationRule($endCursor: String) {
+  hostConfigurationRules(
+    first: 500
+    after: $endCursor
+    filterBy: { enabled: true }
+  ) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    nodes {
+      id
+      name
+      shortName
+      externalId
+      description
+      remediationInstructions
+      severity
+      enabled
+      builtin
+    }
+    totalCount
+  }
+}

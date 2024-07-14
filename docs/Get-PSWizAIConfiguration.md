@@ -1,4 +1,4 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
 online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod
@@ -13,7 +13,7 @@ Retrieves the AI configuration settings from the Wiz API.
 ## SYNTAX
 
 ```
-Get-PSWizAIConfiguration
+Get-PSWizAIConfiguration [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,9 @@ The output will be the AI settings if the request is successful.
 ```
 
 ## PARAMETERS
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

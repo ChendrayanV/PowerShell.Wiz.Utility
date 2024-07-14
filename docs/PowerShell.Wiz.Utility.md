@@ -20,6 +20,9 @@ Disables specified connectors in the Wiz platform.
 ### [Enable-PSWizConnector](Enable-PSWizConnector.md)
 Enables specified connectors in the Wiz platform.
 
+### [Get-PSWizAIConfiguration](Get-PSWizAIConfiguration.md)
+Retrieves the AI configuration settings from the Wiz API.
+
 ### [Get-PSWizAuthenticationToken](Get-PSWizAuthenticationToken.md)
 Retrieves an authentication token from Wiz API using client credentials.
 
