@@ -6,6 +6,7 @@ function Invoke-PSWizCloudRegoRuleTestWithJson {
     .DESCRIPTION
         The Invoke-PSWizCloudRegoRuleTestWithJson function sends a GraphQL query to the PSWiz API to run a Cloud Rego rule test.
         It requires the Rego rule and the Terraform JSON configuration as input parameters. The function constructs the query using a template file and sends it to the PSWiz API endpoint.
+        The JSON configuration is converted from JSON to a hashtable before being sent in the query.
 
     .PARAMETER RegoRule
         The Rego rule to be tested. This parameter is mandatory.
@@ -30,6 +31,7 @@ function Invoke-PSWizCloudRegoRuleTestWithJson {
     .NOTES
         The function requires a GraphQL query template file named 'invokeCloudRegoRuleTest.graphql' located in a 'graphql' subfolder of the script's directory.
         It also requires that the script-level variables $Script:Data_Center and $Script:Access_Token be set with the appropriate values for the API endpoint and authentication.
+        The JSON configuration is converted to a hashtable to ensure it is processed correctly by the GraphQL query.
 
     #>
 
@@ -49,7 +51,7 @@ function Invoke-PSWizCloudRegoRuleTestWithJson {
         query         = $(Get-Content -Path "$($queryPath)\graphql\invokeCloudRegoRuleTest.graphql" -Raw)
         variables     = @{
             rule = $RegoRule
-            json = $($TFJson | ConvertFrom-Json)
+            json = $($TFJson | ConvertFrom-Json -AsHashtable)
         }
     } | ConvertTo-Json -Compress -Depth 9
     
