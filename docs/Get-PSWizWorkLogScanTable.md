@@ -1,4 +1,4 @@
----
+﻿---
 external help file: PowerShell.Wiz.Utility-help.xml
 Module Name: PowerShell.Wiz.Utility
 online version:
@@ -13,7 +13,7 @@ Retrieves workload scan logs from Wiz.io API.
 ## SYNTAX
 
 ```
-Get-PSWizWorkLogScanTable
+Get-PSWizWorkLogScanTable [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,9 @@ Get-PSWizWorkLogScanTable
 This example retrieves all workload scan logs and returns them as a collection of objects.
 
 ## PARAMETERS
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

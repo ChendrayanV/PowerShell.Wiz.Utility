@@ -1,0 +1,27 @@
+query askAIRuleMatcher(
+  $ruleTitle: String!
+  $nativeType: [String!]!
+  $exampleResourceProviderData: JSON!
+) {
+  aiRuleMatcher(
+    input: {
+      cloudConfigurationRule: {
+        ruleTitle: $ruleTitle
+        nativeType: $nativeType
+        exampleResourceProviderData: $exampleResourceProviderData
+      }
+    }
+  ) {
+    ... on AiRuleMatcherCloudConfigurationRuleResult {
+      id
+      regoCode
+      __typename
+    }
+    ... on AiRuleMatcherDataClassificationRuleResult {
+      id
+      regex
+      __typename
+    }
+    __typename
+  }
+}

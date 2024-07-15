@@ -43,14 +43,14 @@ function Get-PSWizWorkLogScanTable {
                 endCursor = $response.data.resourceScanResults.pageInfo.endCursor
             }
         } | ConvertTo-Json -Compress
-        $response.data.resourceScanResults.nodes
-        # $Collection += $response.data.resourceScanResults.nodes
-        # $Collection
+        
+        $Collection += $response.data.resourceScanResults.nodes
+        
         if ($response.data.resourceScanResults.pageInfo.hasNextPage -eq $false) {
             break
         }
     }
     
-    # $Collection
+    $Collection
     
 }

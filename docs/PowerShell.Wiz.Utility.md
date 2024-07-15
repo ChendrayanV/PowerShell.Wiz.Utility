@@ -76,6 +76,9 @@ Retrieves license usage information for the specified date range from the PSWiz 
 ### [Get-PSWizUser](Get-PSWizUser.md)
 {{ Fill in the Synopsis }}
 
+### [Get-PSWizWorkLogScanTable](Get-PSWizWorkLogScanTable.md)
+Retrieves workload scan logs from Wiz.io API.
+
 ### [Invoke-PSWizCloudRegoRuleTestWithJson](Invoke-PSWizCloudRegoRuleTestWithJson.md)
 Invokes a PSWiz Cloud Rego rule test using the provided JSON configuration.
 
