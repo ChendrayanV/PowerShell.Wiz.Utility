@@ -1,0 +1,13 @@
+query runCloudRegoRuleTestWithJson($rule: String!, $json: JSON!) {
+  cloudConfigurationRuleJsonTest(rule: $rule, json: $json) {
+    result
+    output
+    evidence {
+      current
+      expected
+      path
+      __typename
+    }
+    __typename
+  }
+}
