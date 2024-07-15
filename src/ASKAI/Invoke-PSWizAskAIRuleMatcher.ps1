@@ -25,11 +25,9 @@ function Invoke-PSWizAskAIRuleMatcher {
 
     .NOTES
     The function requires a GraphQL query file named `askAIRuleMatcher.graphql` located in a subdirectory named `graphql` relative to the script's path. The script variables `$Script:Data_Center` and `$Script:Access_Token` must be set with the appropriate Wiz.io API data center and access token, respectively.
-
-    .REQUIRES
-    - PowerShell 5.1 or later
-    - Invoke-RestMethod cmdlet
-    - The GraphQL query file `askAIRuleMatcher.graphql` must be present in the `graphql` directory relative to the script's location.
+        - PowerShell 5.1 or later
+        - Invoke-RestMethod cmdlet
+        - The GraphQL query file `askAIRuleMatcher.graphql` must be present in the `graphql` directory relative to the script's location.
 
     #>
 
