@@ -28,6 +28,11 @@ function Invoke-PSWizCloudRegoRuleTestWithJson {
 
         This command invokes the PSWiz Cloud Rego rule test using the specified Rego rule and an inline Terraform JSON configuration.
 
+    .EXAMPLE
+        PS C:\> Invoke-PSWizCloudRegoRuleTestWithJson -RegoRule $(Get-Content .\data\test.rego -Raw) -TFJson $(Get-Content .\data\plan.json -Raw) 
+
+        This command invokes the PSWiz Cloud Rego rule test using the specified Rego rule and an inline Terraform JSON configuration.
+
     .NOTES
         The function requires a GraphQL query template file named 'invokeCloudRegoRuleTest.graphql' located in a 'graphql' subfolder of the script's directory.
         It also requires that the script-level variables $Script:Data_Center and $Script:Access_Token be set with the appropriate values for the API endpoint and authentication.

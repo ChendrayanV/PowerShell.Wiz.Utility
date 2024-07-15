@@ -1,0 +1,44 @@
+query getWorkloadScanLogTable($endCursor: String) {
+  resourceScanResults(first: 500, after: $endCursor) {
+    nodes {
+      id
+      status
+      statusMessage
+      triggerType
+      triggerSource
+      timestamp
+      projects {
+        id
+        name
+        slug
+        isFolder
+      }
+      connector {
+        id
+        name
+        type {
+          id
+          name
+        }
+      }
+      resource {
+        region
+        graphEntity {
+          id
+          type
+          name
+          properties
+        }
+      }
+      outpost {
+        id
+        name
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+      __typename
+    }
+  }
+}
